@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# if we don't have a target var, then we're running in server mode
+# ...so start node and iperf
+if [[ ! -n "$TARGET" ]]
+then
+	#echo 'Server mode...'
+	#echo 'sg' > //var/lib/mysql/echo.txt
+	#mkdir /var/lib/mysql
+	#echo 'ho scritto su provatxt'
+	        for i in `seq 1 20`; do
+            echo numero: $i
+	    echo $(dd bs=1M count=1024 if=/dev/zero of=/simple-container-benchmarks-writetest conv=fdatasync)
+	    free | head -2
+        done
+	#(time dd bs=1M count=1024 if=/dev/zero of=/simple-container-benchmarks-writetest conv=fdatasync) >> /var/lib/mysql/prova.txt
+	
+else
+	echo 'Esempio prova'
+	echo "Target: $TARGET"
+fi
+rm simple-container-benchmarks-writetest
